@@ -1,0 +1,29 @@
+<%- include('_header'); -%>
+
+<% if ((currentUser) && (currentUser.id === user.id)) { %>
+ 
+<% } %>
+<h1><center><%= user.name() %><center></h1>
+<h3><center>Joined on <%= user.createdAt %><center></h3>
+<h2><center>My Orders</center></h2>
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<% orders.forEach(function(order) { %>
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	   <ul class="list-group">
+	   <% order.items.forEach(function(items) { %>
+		  <li class="list-group-item">
+			<span class="badge">€<%=items.price.toFixed(2) %></span>
+			<%=items.qty%> x <%=items.item.name %>
+		  </li>
+		<% }) %>
+	</ul>
+	  </div>
+	  <div class="panel-footer">Total: €<%=order.cart.totalPrice.toFixed(2) %></div>
+	</div>
+<% }) %>
+</div>
+</div>
+
+<%- include('_footer'); -%>

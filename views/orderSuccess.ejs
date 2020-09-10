@@ -1,0 +1,27 @@
+<%- include('_header'); -%>
+
+<div class="row">
+	<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+		<div id="success" class="alert alert-success" <%   if (noMessage) { %> hidden <% } %>>
+			<%= successMessage %>
+		</div>
+	</div>
+</div>
+
+<h2>Thank you for ordering Ryan's Pizzarelli House</h2>
+<!-- <h3>Deliver to: <%= items.address %></h3> -->
+<h3>Estimated Delivery Time: <%= new Date(new Date().getTime() + 30 * 60 * 1000).toLocaleTimeString()%></h3>
+<div class="panel panel-default">
+	  <div class="panel-body">
+	   <ul class="list-group">
+	   <% items.forEach(function(items) { %>
+		  <li class="list-group-item">
+			<span class="badge">€<%=items.price.toFixed(2) %></span>
+			<%=items.qty%> x <%=items.item.name %>
+		  </li>
+		<% }) %>
+	</ul>
+	  </div>
+	  <div class="panel-footer"><strong>Total: €<%=totalPrice.toFixed(2) %></strong></div>
+	</div>
+<%- include('_footer'); -%>

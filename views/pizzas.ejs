@@ -1,0 +1,40 @@
+<%- include('_header'); -%>
+
+<!-- The sidebar -->
+<link rel="stylesheet" href="/css/menu_sidebar.css">
+<div class="sidebar">
+<h2>Menu</h2>
+  <a href="/pizzas">Pizzas</a>
+  <a href="/side_order">Side Orders</a>
+  <a href="/drinks">Drinks</a>
+</div>
+
+<div class="content">
+	<!--<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Create your own</h3>
+			Toppings: <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+<label for="vehicle1"> pepperoni</label><br>
+			<br>Price: €t	
+			<div class="clearfix">
+				<a href="/cart/" class="btn btn-success pull-left" role="Button">Add to Cart</a>
+			</div>
+		</div>
+	</div> -->
+<% pizzas.forEach(function(pizza) { %>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3><%= pizza.name %></h3>
+			<img src="/images/<%= pizza.name %>.jpg" alt=<%= pizza.name %> style="width:200px;height:200px;">
+			Toppings: <%= pizza.description %>
+			<br>Price: €<%= pizza.price.toFixed(2) %>	
+			<div class="clearfix">
+		<a href="/cart/<%= pizza._id%>" class="btn btn-success pull-left" role="Button">Add to Cart</a>
+		</div>
+		</div>
+		
+	</div>
+<% }) %>
+</div>
+
+<%- include('_footer'); -%>

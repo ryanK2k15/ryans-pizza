@@ -1,0 +1,28 @@
+<%- include('_header'); -%>
+
+<!-- The sidebar -->
+<link rel="stylesheet" href="/css/menu_sidebar.css">
+<div class="sidebar">
+<h2>Menu</h2>
+  <a href="/pizzas">Pizzas</a>
+  <a href="/side_order">Side Orders</a>
+  <a href="/drinks">Drinks</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+<% drinks.forEach(function(drink) { %>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3><%= drink.name %></h3>
+			<img src="/images/<%= drink.name %>.jpg" alt=<%= drink.name %> style="width:200px;height:200px;">
+			<br>Price: €<%= drink.price.toFixed(2) %>	
+			<div class="clearfix">
+			<a href="/cart/<%= drink._id%>" class="btn btn-success pull-left" role="Button">Add to Cart</a>
+			</div>
+		</div>	
+	</div>
+<% }) %>
+</div>
+
+<%- include('_footer'); -%>
