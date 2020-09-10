@@ -2,8 +2,8 @@
 	"name": "ryans-pizza",
 	"private": true,
 	"scripts": {
-		"start": "nodemon app",
-		"production": "forever app"
+		"start": "nodemon app.js",
+		"production": "forever app.js"
 	},
 	"dependencies": {
 		"bcrypt-nodejs": "0.0.3",
